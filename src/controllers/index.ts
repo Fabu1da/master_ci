@@ -1,0 +1,1 @@
+export { PostController, IPostController } from "./Post.controller";

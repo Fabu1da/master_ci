@@ -1,0 +1,19 @@
+###
+
+GET http://localhost:3000/api/posts
+Accept: application/json
+
+###
+POST http://localhost:3000/api/posts
+Content-Type: application/json
+
+{
+    "title": "New Post",
+    "content": "This is a new post.",
+    "createdAt": "2024-06-01T12:00:00Z",   
+    "createdBy": 1
+}
+
+###
+GET http://localhost:3000/api/posts/6
+Accept: application/json

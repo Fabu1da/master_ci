@@ -1,0 +1,39 @@
+name: CI
+
+on: #when to trigger the workflow
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
+
+jobs: #jobs to run
+    ci:
+        runs-on: ubuntu-latest #runner environment
+           
+        services: #services to run during the job
+            postgres:
+                image: postgres:16 #postgres service using latest image
+                ports:
+                    - 5432:5432 #expose postgres port
+                env:
+                    POSTGRES_USER: postgres #postgres username
+                    POSTGRES_PASSWORD: postgres #postgres password
+                    POSTGRES_DB: test_db #postgres database name
+                options: >-
+                    --health-cmd pg_isready -U postgres -d test_db 
+                    --health-interval 10s
+                    --health-timeout 5s 
+                    --health-retries 5 
+
+        steps: #steps to execute in the job
+            - uses: actions/checkout@v4 #checkout code
+            - uses: actions/setup-node@v4 #setup node environment
+              with:
+                node-version: 23 #specify node version
+                cache: 'npm' #cache npm dependencies
+
+            - run: npm ci #install dependencies
+            - run: npm run lint #run linter
+            - run: npm test #run tests
+              env:
+                DATABASE_URL: postgres://postgres:postgres@localhost:5432/test_db #set database URL for tests

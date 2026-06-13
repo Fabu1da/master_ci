@@ -1,0 +1,1 @@
+export { PostService, IPostService } from "./Post.service";

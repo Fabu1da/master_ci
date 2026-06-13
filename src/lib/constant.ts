@@ -1,0 +1,2 @@
+export const POST_TITLE_MAX_LENGTH = 100;
+export const POST_CONTENT_MAX_LENGTH = 5000;
