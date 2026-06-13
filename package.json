@@ -15,9 +15,10 @@
     "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run -d src/typeormconfig.ts",
     "migration:revert": "ts-node ./node_modules/typeorm/cli.js migration:revert -d src/typeormconfig.ts",
     "db:sync": "ts-node ./node_modules/typeorm/cli.js schema:sync -d src/typeormconfig.ts",
-     "lint": "eslint ."
+    "lint": "eslint ."
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@types/bcrypt": "^6.0.0",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
@@ -26,6 +27,8 @@
     "@types/jsonwebtoken": "^9.0.10",
     "@types/mocha": "^10.0.10",
     "@types/node": "^25.9.1",
+    "@typescript-eslint/eslint-plugin": "^8.61.0",
+    "@typescript-eslint/parser": "^8.61.0",
     "jest": "^30.4.2",
     "nodemon": "^3.1.14",
     "ts-jest": "^29.4.11",
