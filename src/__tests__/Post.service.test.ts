@@ -19,7 +19,7 @@ describe("PostService Tests", () => {
 
         mockPostMapper = {
             toPostDTO: jest.fn()
-        } as any;
+        } as jest.Mocked<PostMapper>;
 
         postService = new PostService(mockPostRepository, mockPostMapper);
     });
