@@ -14,7 +14,8 @@
     "migration:show": "ts-node ./node_modules/typeorm/cli.js migration:show -d src/typeormconfig.ts",
     "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run -d src/typeormconfig.ts",
     "migration:revert": "ts-node ./node_modules/typeorm/cli.js migration:revert -d src/typeormconfig.ts",
-    "db:sync": "ts-node ./node_modules/typeorm/cli.js schema:sync -d src/typeormconfig.ts"
+    "db:sync": "ts-node ./node_modules/typeorm/cli.js schema:sync -d src/typeormconfig.ts",
+     "lint": "eslint ."
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
