@@ -32,8 +32,8 @@ jobs: #jobs to run
                 node-version: 23 #specify node version
                 cache: 'npm' #cache npm dependencies
 
-            - run: npm ci #install dependencies
-            - run: npm run lint #run linter
-            - run: npm test #run tests
+            - run: yarn install --frozen-lockfile  #install dependencies
+            - run: yarn lint #run linter
+            - run: yarn test #run tests
               env:
                 DATABASE_URL: postgres://postgres:postgres@localhost:5432/test_db #set database URL for tests
