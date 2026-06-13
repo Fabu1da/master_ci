@@ -29,7 +29,7 @@ jobs: #jobs to run
             - uses: actions/checkout@v4 #checkout code
             - uses: actions/setup-node@v4 #setup node environment
               with:
-                node-version: 23 #specify node version
+                node-version: 22 #specify node version
                 cache: 'yarn' #cache yarn dependencies
 
             - run: yarn install --frozen-lockfile  #install dependencies
