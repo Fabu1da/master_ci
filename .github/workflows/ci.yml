@@ -20,7 +20,7 @@ jobs: #jobs to run
                     POSTGRES_PASSWORD: postgres #postgres password
                     POSTGRES_DB: test_db #postgres database name
                 options: >-
-                    --health-cmd pg_isready -U postgres -d test_db 
+                    --health-cmd "pg_isready -U postgres -d test_db"
                     --health-interval 10s
                     --health-timeout 5s 
                     --health-retries 5 
