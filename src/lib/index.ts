@@ -1,1 +1,0 @@
-import {TYPES, POST_CONTENT_MAX_LENGTH, POST_TITLE_MAX_LENGTH} from "./lib";
