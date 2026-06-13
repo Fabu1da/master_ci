@@ -30,7 +30,7 @@ jobs: #jobs to run
             - uses: actions/setup-node@v4 #setup node environment
               with:
                 node-version: 23 #specify node version
-                cache: 'npm' #cache npm dependencies
+                cache: 'yarn' #cache yarn dependencies
 
             - run: yarn install --frozen-lockfile  #install dependencies
             - run: yarn lint #run linter
