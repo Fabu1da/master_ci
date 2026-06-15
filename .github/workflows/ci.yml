@@ -6,6 +6,8 @@ on: #when to trigger the workflow
     pull_request:
         branches: [main]
 
+
+
 jobs: #jobs to run
     ci:
         runs-on: ubuntu-latest #runner environment
@@ -36,4 +38,9 @@ jobs: #jobs to run
             - run: yarn lint #run linter
             - run: yarn test #run tests
               env:
-                DATABASE_URL: postgres://postgres:postgres@localhost:5432/test_db #set database URL for tests
+                DATABASE_URL: postgres://postgres:postgres@localhost:5432/test_db
+                DATABASE_HOST: localhost
+                DATABASE_PORT: 5432
+                DATABASE_NAME: test_db
+                DATABASE_USER: postgres
+                DATABASE_PASSWORD: myfuture

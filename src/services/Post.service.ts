@@ -17,7 +17,7 @@ export class PostService implements IPostService {
         @inject(TYPES.PostRepository) private _postRepository: IPostRepository,
         @inject(TYPES.PostMapper) private _postMapper: IPostMapper
     ) {}
-    // Implement your service methods here
+    
     async createPost(post:Post): Promise<Post> {
         if (!post.title || !post.content || !post.createdBy) {
             throw new Error("Title, content, and createdBy are required");

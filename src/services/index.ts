@@ -1,1 +1,2 @@
-export { PostService, IPostService } from "./Post.service";
+export { PostService } from "./Post.service";
+export { UserService } from "./User.service";

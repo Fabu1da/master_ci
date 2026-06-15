@@ -1,12 +1,23 @@
 {
   "compilerOptions": {
-    "target": "ES6",
-    "module": "commonjs",
+    "target": "ES2020",
+    "module": "ES2020",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "outDir": "./dist",
     "rootDir": ".",
     "strict": false,
-    "types": ["node", "jest"]
+    "types": ["node", "jest"],
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "lib": ["ES2020"]
+  },
+  "tsx": {
+    "esm": true,
+    "cjs": false
   }
 }

@@ -5,17 +5,17 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon --exec ts-node src/index.ts",
+    "dev": "nodemon --exec tsx src/index.ts",
     "build": "tsc",
     "test": "jest",
     "test:watch": "jest --watchAll",
-    "typeorm": "ts-node ./node_modules/typeorm/cli.js",
-    "migration:generate": "ts-node ./node_modules/typeorm/cli.js migration:generate -d src/typeormconfig.ts -n",
-    "migration:create": "ts-node ./node_modules/typeorm/cli.js migration:create -d src/migration",
-    "migration:show": "ts-node ./node_modules/typeorm/cli.js migration:show -d src/typeormconfig.ts",
-    "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run -d src/typeormconfig.ts",
-    "migration:revert": "ts-node ./node_modules/typeorm/cli.js migration:revert -d src/typeormconfig.ts",
-    "db:sync": "ts-node ./node_modules/typeorm/cli.js schema:sync -d src/typeormconfig.ts",
+    "typeorm": "tsx ./node_modules/typeorm/cli.js",
+    "migration:generate": "tsx ./node_modules/typeorm/cli.js migration:generate -d src/typeormconfig.ts -n",
+    "migration:create": "tsx ./node_modules/typeorm/cli.js migration:create -d src/migration",
+    "migration:show": "tsx ./node_modules/typeorm/cli.js migration:show -d src/typeormconfig.ts",
+    "migration:run": "tsx ./node_modules/typeorm/cli.js migration:run -d src/typeormconfig.ts",
+    "migration:revert": "tsx ./node_modules/typeorm/cli.js migration:revert -d src/typeormconfig.ts",
+    "db:sync": "tsx ./node_modules/typeorm/cli.js schema:sync -d src/typeormconfig.ts",
     "lint": "eslint ."
   },
   "devDependencies": {
@@ -34,6 +34,7 @@
     "nodemon": "^3.1.14",
     "ts-jest": "^29.4.11",
     "ts-node": "^10.9.2",
+    "tsx": "^4.22.4",
     "typescript": "^6.0.3"
   },
   "dependencies": {

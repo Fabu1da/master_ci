@@ -1,10 +1,10 @@
 import { controller, httpGet, httpPost } from "inversify-express-utils";
-import { IPostService } from "../services";
 import { TYPES } from "../lib/types";
 import { inject } from "inversify";
 import { Post } from "../entities";
 import { Request, Response } from "express";
 import { IPostMapper } from "../mapper/Post.mapper";
+import { IPostService } from "../services/Post.service";
 
 
 export interface IPostController {

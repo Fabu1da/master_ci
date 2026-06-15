@@ -3,6 +3,7 @@ import { PostMapper } from "../mapper";
 import { IPostRepository } from "../repositories/Post.repository";
 import { PostService } from "../services/Post.service";
 import { Post } from "../entities";
+import { User } from "../entities/user.entity";
 
 describe("PostService Tests", () => {
 
@@ -30,7 +31,7 @@ describe("PostService Tests", () => {
         post.title = "Test Post";
         post.content = "This is a test post.";
         post.createdAt = new Date();
-        post.createdBy = 1;
+        post.createdBy = new User();
 
         mockPostRepository.create.mockResolvedValue(post);
 
@@ -45,13 +46,13 @@ describe("PostService Tests", () => {
         post1.title = "Test Post 1";
         post1.content = "This is the first test post.";
         post1.createdAt = new Date();
-        post1.createdBy = 1;
+        post1.createdBy = new User();
 
         const post2 = new Post();
         post2.title = "Test Post 2";
         post2.content = "This is the second test post.";
         post2.createdAt = new Date();
-        post2.createdBy = 2;
+        post2.createdBy = new User();
 
         mockPostRepository.findAll.mockResolvedValue([post1, post2]);
 

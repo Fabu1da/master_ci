@@ -7,10 +7,10 @@ dotenv.config();
 import { InversifyExpressServer } from "inversify-express-utils";
 import helmet from "helmet";
 import cors from "cors";
-import { diContainer } from "../inversify.config";
 
 import {getConfig} from "./typeormconfig";
 import { TYPES } from "./lib/types";
+import { diContainer } from "../inversify.config";
 
 
 (async ()=> {
