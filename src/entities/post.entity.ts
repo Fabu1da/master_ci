@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, Entity, OneToOne, JoinColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
 import { POST_TITLE_MAX_LENGTH } from "../lib/constant";
 
 import { User } from "./user.entity";
@@ -14,7 +14,7 @@ export class Post {
     content: string;
     @CreateDateColumn()
     createdAt: Date;
-    @OneToOne(() => User, )
+    @ManyToOne(() => User)
     @JoinColumn()
     createdBy: User;
 }

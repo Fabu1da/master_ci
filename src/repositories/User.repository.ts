@@ -5,6 +5,7 @@ import { User } from "../entities/user.entity";
 
 
 export interface IUserRepository {
+    getAllUsers(): Promise<User[]>;
     findById(id: number): Promise<User | null>;
     findByEmail(email: string): Promise<User | null>;
     create(user: User): Promise<User>;
@@ -17,6 +18,10 @@ export class UserRepository implements IUserRepository {
     constructor(
         @inject(TYPES.DB) private dataSource: DataSource
     ) {}
+
+    async getAllUsers(): Promise<User[]> {
+        return await this.dataSource.getRepository(User).find();
+    }
 
     async findById(id: number): Promise<User | null> {
         return await this.dataSource.getRepository(User).findOneBy({ id });

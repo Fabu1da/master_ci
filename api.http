@@ -1,19 +1,34 @@
 ###
+GET http://localhost:3000/api/users
+Accept: application/json
 
+### Step 1: Create a user first
+POST http://localhost:3000/api/users/create
+Content-Type: application/json
+
+{
+    "email": "fff@example.com",    
+    "firstName": "f",
+    "lastName": "k",
+    "password": "password123",
+    "confirmPassword": "password123"
+}
+
+### Step 2: Get all posts
 GET http://localhost:3000/api/posts
 Accept: application/json
 
-###
+### Step 3: Create a post (replace createdBy with the actual user ID from Step 1)
 POST http://localhost:3000/api/posts
 Content-Type: application/json
 
 {
-    "title": "New Post",
+    "title": "New today 1",
     "content": "This is a new post.",
-    "createdAt": "2024-06-01T12:00:00Z",   
-    "createdBy": 1
+    "createdBy": 2
 }
 
 ###
-GET http://localhost:3000/api/posts/6
+GET http://localhost:3000/api/posts/1
 Accept: application/json
+

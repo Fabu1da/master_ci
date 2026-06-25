@@ -5,6 +5,7 @@ import { PostRepository } from "./src/repositories";
 import { PostMapper } from "./src/mapper";
 import { IPostRepository } from "./src/repositories/Post.repository";
 import { IPostMapper } from "./src/mapper/Post.mapper";
+import { Kafka, Producer } from "kafkajs";
 
 import "./src/controllers";
 import { IUserRepository, UserRepository } from "./src/repositories/User.repository";
@@ -13,6 +14,17 @@ import { IPostService } from "./src/services/Post.service";
 import { IUserService } from "./src/services/User.service";
 
 export const diContainer: Container = new Container();
+
+// Kafka Producer binding
+const kafka = new Kafka({
+    clientId: process.env.KAFKA_CLIENT_ID || "my-app",
+    brokers: (process.env.KAFKA_BROKERS || "localhost:9092").split(","),
+});
+
+const producer = kafka.producer();
+diContainer.bind<Producer>(TYPES.KafkaProducer).toConstantValue(producer);
+
+// Service bindings
 diContainer.bind<IPostService>(TYPES.PostService).to(PostService);
 diContainer.bind<IPostRepository>(TYPES.PostRepository).to(PostRepository);
 diContainer.bind<IPostMapper>(TYPES.PostMapper).to(PostMapper);

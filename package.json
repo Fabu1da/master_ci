@@ -6,6 +6,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon --exec tsx src/index.ts",
+    "dev:email-consumer": "nodemon --exec tsx src/consumers/email-consumer.ts",
+    "dev:notification-consumer": "nodemon --exec tsx src/consumers/notification-consumer.ts",
+    "all:dev": "concurrently -n api,email,notif -c blue,magenta,green -k \"nodemon --exec tsx src/index.ts\" \"nodemon --exec tsx src/consumers/email-consumer.ts\" \"nodemon --exec tsx src/consumers/notification-consumer.ts\"",
     "build": "tsc",
     "test": "jest",
     "test:watch": "jest --watchAll",
@@ -27,9 +30,11 @@
     "@types/jest": "^30.0.0",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^25.9.1",
+    "@types/node": "^25.9.4",
+    "@types/nodemailer": "^8.0.1",
     "@typescript-eslint/eslint-plugin": "^8.61.0",
     "@typescript-eslint/parser": "^8.61.0",
+    "concurrently": "^10.0.3",
     "jest": "^30.4.2",
     "nodemon": "^3.1.14",
     "ts-jest": "^29.4.11",
@@ -43,13 +48,16 @@
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "eslint": "^10.5.0",
-    "express": "4",
+    "express": "^5.2.1",
     "helmet": "^8.2.0",
     "inversify": "5.1.1",
     "inversify-express-utils": "6.3.2",
     "jsonwebtoken": "^9.0.3",
+    "kafkajs": "^2.2.4",
+    "nodemailer": "^9.0.1",
     "pg": "^8.21.0",
     "reflect-metadata": "^0.2.2",
-    "typeorm": "^1.0.0"
+    "typeorm": "^1.0.0",
+    "ws": "^8.21.0"
   }
 }

@@ -5,6 +5,7 @@ import { User } from "../entities/user.entity";
 import { UserMapper } from "../mapper/User.mapper";
 
 export interface IUserService {
+    getAllUsers(): Promise<User[]>;
     findById(id: number): Promise<User | null>;
     findByEmail(email: string): Promise<User | null>;
     create(user: User): Promise<User>;
@@ -18,6 +19,10 @@ export class UserService implements IUserService {
         @inject(TYPES.UserRepository) private userRepository: IUserRepository,
         @inject(TYPES.UserMapper) private userMapper: UserMapper
     ) {}
+
+    async getAllUsers(): Promise<User[]> {
+        return this.userRepository.getAllUsers();
+    }
 
     async findById(id: number): Promise<User | null> {
         return this.userRepository.findById(id);

@@ -5,6 +5,7 @@ import { Post } from "../entities";
 import { Request, Response } from "express";
 import { IPostMapper } from "../mapper/Post.mapper";
 import { IPostService } from "../services/Post.service";
+import { IUserService } from "../services/User.service";
 
 
 export interface IPostController {
@@ -17,7 +18,8 @@ export interface IPostController {
 export class PostController implements IPostController {
     constructor(
         @inject(TYPES.PostService) private _postService: IPostService,
-        @inject(TYPES.PostMapper) private _postMapper: IPostMapper
+        @inject(TYPES.PostMapper) private _postMapper: IPostMapper,
+        @inject(TYPES.UserService) private _userService: IUserService
     ) {}
 
     @httpPost("/")
@@ -27,6 +29,13 @@ export class PostController implements IPostController {
             if (!title || !content || !createdBy) {
                 return res.status(400).json({ error: "Title, content, and createdBy are required" });
             }
+
+            // Validate that the user exists
+            const user = await this._userService.findById(createdBy);
+            if (!user) {
+                return res.status(404).json({ error: `User with ID ${createdBy} not found` });
+            }
+
             const post = new Post();
             post.title = title;
             post.content = content;
@@ -36,7 +45,7 @@ export class PostController implements IPostController {
             return res.status(201).json( this._postMapper.toPostDTO(createdPost) );
         } catch (error) {
             console.error("Error creating post:", error);
-            return res.status(500).json({ error: "Failed to create post" });
+            return res.status(500).json({ error: error.message || "Failed to create post" });
         }
     }
     @httpGet("/")
